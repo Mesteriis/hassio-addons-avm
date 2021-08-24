@@ -1,4 +1,17 @@
 
+## 14.3.7.99202108230857-7410-fefce0337ubuntu20.04.1-ls151 (24-08-2021)
+- Update to latest version from linuxserver/docker-qbittorrent
+
+## 14.3.7.99202108032349-7395-0415c0c6fubuntu20.04.1-ls149 (05-08-2021)
+- Update to latest version from linuxserver/docker-qbittorrent
+- Improved smb mount code
+
+## 14.3.6.99202107121017-7389-3ac8c97e6ubuntu20.04.1-ls145 (13-07-2021)
+- Update to latest version from linuxserver/docker-qbittorrent
+
+## 14.3.6.99202107050919-7388-ede42910dubuntu20.04.1-ls143 (05-07-2021)
+- Update to latest version from linuxserver/docker-qbittorrent
+
 ## 14.3.6.99202106272003-7387-ac8105c30ubuntu20.04.1-ls141 (28-06-2021)
 - Update to latest version from linuxserver/docker-qbittorrent
 
