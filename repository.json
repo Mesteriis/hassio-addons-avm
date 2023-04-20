@@ -1,5 +1,5 @@
 {
-  "name": "1 Shade Hassio Add-ons",
-  "url": "https://git.sh-inc.ru/avm/hassion_personal_addon_repository",
+  "name": "Shade Hassio Add-ons",
+  "url": "https://github.com/Mesteriis/hassio-addons-avm.git",
   "maintainer": "Alexander Mescheryakov <avm@sh-inc.ru>"
 }
