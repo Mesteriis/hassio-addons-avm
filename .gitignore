@@ -12,3 +12,4 @@ include/
 lib/
 venv/
 .translations
+.idea/
