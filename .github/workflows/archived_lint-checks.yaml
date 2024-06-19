@@ -50,16 +50,16 @@ jobs:
             fi
           done
 
-#  markdownlint:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: ↩️ Checkout
-#        uses: actions/checkout@v4
-#        with:
-#          # Full git history is needed to get a proper list of changed files within `super-linter`
-#          fetch-depth: 0
-#
-#      - name: 🔎 Run markdownlint
-#        uses: nosborn/github-action-markdown-cli@v3.3.0
-#        with:
-#          config_file: .markdownlint.yaml
+  markdownlint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ↩️ Checkout
+        uses: actions/checkout@v4
+        with:
+          # Full git history is needed to get a proper list of changed files within `super-linter`
+          fetch-depth: 0
+
+      - name: 🔎 Run markdownlint
+        uses: nosborn/github-action-markdown-cli@v3.3.0
+        with:
+          config_file: .markdownlint.yaml
