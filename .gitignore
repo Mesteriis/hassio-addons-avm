@@ -220,3 +220,5 @@ FodyWeavers.xsd
 *.msp
 *.sln.iml
 .pydevproject
+*/.venv/
+*/venv/

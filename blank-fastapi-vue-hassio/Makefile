@@ -28,3 +28,6 @@ run:
 	@echo "Running server..."
 	uvicorn app.main:app --host localhost --port 8000
 	@echo "Server running at http://localhost:8000"
+
+
+
