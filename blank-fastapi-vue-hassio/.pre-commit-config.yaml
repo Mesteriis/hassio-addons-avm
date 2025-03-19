@@ -1,0 +1,25 @@
+exclude: '\.js$|\.html|\.css'
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      # Removes spaces at the end of a line.
+      - id: trailing-whitespace
+      # Removes breakpoint, pdb and the like.
+      - id: debug-statements
+      # Fixes a bug with the last line. (If not, or if there is more than one.)
+      - id: end-of-file-fixer
+
+  # Formats the code into a consistent look.
+  - repo: https://github.com/psf/black-pre-commit-mirror
+    rev: 24.4.2
+    hooks:
+      - id: black
+        files: '\.py$'
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.4.9
+    hooks:
+      - id: ruff
+        args: [ --fix, --exit-non-zero-on-fix]
