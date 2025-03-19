@@ -7,6 +7,7 @@ on:
 
 jobs:
   stats_graphs:
+    if: github.repository_owner == 'alexbelgium'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -230,11 +231,11 @@ jobs:
         run: |
           echo "Starting run"
           # Get stars
-          wget -S -O .github/stars.svg https://contrib.rocks/image?repo=Mesteriis/hassio-addons-avm || true
+          wget -S -O .github/stars.svg https://contrib.rocks/image?repo=alexbelgium/hassio-addons || true
           # Get stars2
-          wget -S -O .github/stars2.svg https://git-lister.onrender.com/api/stars/Mesteriis/hassio-addons-avm?limit=30 || true
+          wget -S -O .github/stars2.svg https://git-lister.onrender.com/api/stars/alexbelgium/hassio-addons?limit=30 || true
           # Get stars evolution
-          wget -S -O .github/starsevol.svg "https://api.star-history.com/svg?repos=Mesteriis/hassio-addons-avm&type=Date" || true
+          wget -S -O .github/starsevol.svg "https://api.star-history.com/svg?repos=alexbelgium/hassio-addons&type=Date" || true
       - name: Commit if needed
         uses: EndBug/add-and-commit@v9
         with:

@@ -2,6 +2,11 @@
 # shellcheck shell=bash
 set -e
 
+if ! bashio::supervisor.ping 2>/dev/null; then
+    echo "..."
+    exit 0
+fi
+
 ###################################
 # Export all addon options as env #
 ###################################
@@ -27,7 +32,7 @@ for KEYS in "${arr[@]}"; do
     VALUE=$(jq ."$KEYS" "${JSONSOURCE}")
     # Check if the value is an array
     if [[ "$VALUE" == \[* ]]; then
-        bashio::log.warning "$VALUE is an array, skipping"
+        bashio::log.warning "One of your option is an array, skipping"
     else
         # Continue for single values
         VALUE="${VALUE//[\"\']/}"
@@ -54,7 +59,7 @@ for KEYS in "${arr[@]}"; do
             VALUE="$secret"
         fi
         # text
-        if bashio::config.false "verbose" || [[ "${KEYS}" == *"PASS"* ]]; then
+        if bashio::config.false "verbose" || [[ "${KEYS,,}" == *"pass"* ]]; then
             bashio::log.blue "${KEYS}=******"
         else
             bashio::log.blue "$line"

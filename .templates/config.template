@@ -1,3 +1,7 @@
+#============================#
+# ALEXBELGIUM'S ENV INJECTOR #
+#============================#
+#
 # All env variables set in this file will be enabled in the app
 # This allows enabling more options that normally available in the addon options
 # This file must be filled according to the yaml format.

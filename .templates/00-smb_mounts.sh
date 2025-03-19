@@ -3,6 +3,11 @@
 # shellcheck disable=
 set -e
 
+if ! bashio::supervisor.ping 2>/dev/null; then
+    bashio::log.blue "Disabled : please use another method"
+    exit 0
+fi
+
 ####################
 # DEFINE FUNCTIONS #
 ####################
@@ -19,6 +24,7 @@ test_mount () {
     fi
 
     # Exit if can't write
+    [[ -e "/mnt/$diskname/testaze" ]] && rm -r "/mnt/$diskname/testaze"
     # shellcheck disable=SC2015
     mkdir "/mnt/$diskname/testaze" && touch "/mnt/$diskname/testaze/testaze" && rm -r "/mnt/$diskname/testaze" || ERROR_MOUNT=true
     if [[ "$ERROR_MOUNT" == "true" ]]; then
@@ -65,7 +71,7 @@ if bashio::config.has_value 'networkdisks'; then
     # Alert message that it is a new code
     if [[ "$(date +"%Y%m%d")" -lt "20240201" ]]; then
         bashio::log.warning "------------------------"
-        bashio::log.warning "This is a new code, please report any issues on https://github.com/Mesteriis/hassio-addons-avm"
+        bashio::log.warning "This is a new code, please report any issues on https://github.com/alexbelgium/hassio-addons"
         bashio::log.warning "------------------------"
     fi
 

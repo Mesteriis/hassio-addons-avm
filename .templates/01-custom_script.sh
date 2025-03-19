@@ -6,36 +6,37 @@ set -e
 # INITIALIZATION #
 ##################
 
-# Exit if /config is not mounted
-if [ ! -d /config ]; then
+# Exit if /config is not mounted or HA not used
+if [ ! -d /config ] || ! bashio::supervisor.ping 2>/dev/null; then
+    echo "..."
     exit 0
 fi
 
 # Define slug
-slug="${HOSTNAME}"
+slug="${HOSTNAME/-/_}"
+slug="${slug#*_}"
 
 # Check type of config folder
 if [ ! -f /config/configuration.yaml ] && [ ! -f /config/configuration.json ]; then
     # New config location
     CONFIGLOCATION="/config"
-    CONFIGFILEBROWSER="/addon_configs/$slug/${HOSTNAME#*-}.sh"
+    CONFIGFILEBROWSER="/addon_configs/${HOSTNAME/-/_}/$slug.sh"
 else
     # Legacy config location
-    slug="${HOSTNAME#*-}"
     CONFIGLOCATION="/config/addons_autoscripts"
-    CONFIGFILEBROWSER="/homeassistant/addons_config/${slug}/${slug}.sh"
+    CONFIGFILEBROWSER="/homeassistant/addons_autoscripts/$slug.sh"
 fi
 
 # Default location
 mkdir -p "$CONFIGLOCATION" || true
-CONFIGSOURCE="$CONFIGLOCATION/${HOSTNAME#*-}.sh"
+CONFIGSOURCE="$CONFIGLOCATION/$slug.sh"
 
 bashio::log.green "Execute $CONFIGFILEBROWSER if existing"
-bashio::log.green "Wiki here : github.com/Mesteriis/hassio-addons-avm/wiki/Add-ons-feature-:-customisation"
+bashio::log.green "Wiki here : github.com/alexbelgium/hassio-addons/wiki/Add-ons-feature-:-customisation"
 
 # Download template if no script found and exit
 if [ ! -f "$CONFIGSOURCE" ]; then
-    TEMPLATESOURCE="https://raw.githubusercontent.com/Mesteriis/hassio-addons-avm/master/.templates/script.template"
+    TEMPLATESOURCE="https://raw.githubusercontent.com/alexbelgium/hassio-addons/master/.templates/script.template"
     curl -f -L -s -S "$TEMPLATESOURCE" --output "$CONFIGSOURCE" || true
     exit 0
 fi

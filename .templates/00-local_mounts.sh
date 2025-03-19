@@ -2,6 +2,11 @@
 # shellcheck shell=bash
 set -e
 
+if ! bashio::supervisor.ping 2>/dev/null; then
+    echo "..."
+    exit 0
+fi
+
 ######################
 # MOUNT LOCAL SHARES #
 ######################
