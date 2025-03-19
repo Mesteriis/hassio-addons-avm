@@ -37,6 +37,7 @@ build:
 
 push:
 	@echo "Отправляем образы в Docker Hub..."
+	@docker login
 	@for dockerfile in $(BASE_IMAGE_DOCKERFILES); do \
 		dir=$$(dirname $$dockerfile); \
 		tag_name=$$(echo $$dir | sed 's|^\./||' | tr '/' '-' | tr -d '[:space:]' | tr '[:upper:]' '[:lower:]'); \
