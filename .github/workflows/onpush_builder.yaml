@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: ↩️ Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Update path_filters
         run: |
           # Init
@@ -58,7 +58,7 @@ jobs:
       changedAddons: ${{ steps.filter.outputs.changes }}
     steps:
       - name: ↩️ Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: 📂 Detect changed files
         uses: dorny/paths-filter@v3
         id: filter
@@ -80,7 +80,7 @@ jobs:
         addon: ${{ fromJSON(needs.check-addon-changes.outputs.changedAddons) }}
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Make scripts executable
         run: |
           echo "Starting"
@@ -108,7 +108,7 @@ jobs:
         addon: ${{ fromJSON(needs.check-addon-changes.outputs.changedAddons) }}
     steps:
       - name: ↩️ Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: 🔎 Run Home Assistant Add-on Lint
         uses: frenck/action-addon-linter@v2
         with:
@@ -127,7 +127,7 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Resolve Symlinks
         run: |
@@ -205,7 +205,7 @@ jobs:
         addon: ${{ fromJSON(needs.check-addon-changes.outputs.changedAddons) }}
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Update changelog for minor versions
         run: |
           echo "Starting"
